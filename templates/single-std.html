@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 15px;
+            font-family: 'Segoe UI', sans-serif;
+            background: #111827;
+        }
+
+        .card {
+            width: 420px;
+            max-width: 100%;
+            padding: 25px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 55px rgba(0,0,0,0.4);
+        }
+
+        .profile {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #374151;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #f97316;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(249,115,22,0.2);
+        }
+
+        .profile h2 {
+            color: #f9fafb;
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .profile span {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .details {
+            padding: 20px 0;
+        }
+
+        .details p {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 10px;
+            margin-bottom: 8px;
+            background: #111827;
+            border-radius: 8px;
+            color: #d1d5db;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .details p:hover {
+            background: #374151;
+            transform: translateX(4px);
+        }
+
+        .details strong {
+            color: #f97316;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .present {
+            background: #064e3b;
+            color: #6ee7b7;
+        }
+
+        .absent {
+            background: #7f1d1d;
+            color: #fca5a5;
+        }
+
+        .home-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            padding: 13px;
+            background: linear-gradient(120deg, #f97316, #ea580c);
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249,115,22,0.3);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="profile">
+
+            <img src="{{ student[6] }}" alt="Student Image">
+
+            <h2>{{ student[1] }}</h2>
+
+            <span>Student ID: #{{ student[0] }}</span>
+
+        </div>
+
+
+        <div class="details">
+
+            <p>
+                <strong>Age</strong>
+                <span>{{ student[2] }}</span>
+            </p>
+
+            <p>
+                <strong>Gender</strong>
+                <span>{{ student[3] }}</span>
+            </p>
+
+            <p>
+                <strong>Marks</strong>
+                <span>{{ student[4] }}</span>
+            </p>
+
+            <p>
+                <strong>Course</strong>
+                <span>{{ student[5] }}</span>
+            </p>
+
+            <p>
+                <strong>Attendance</strong>
+
+                {% if student[7] == "true" %}
+                    <span class="status present">Present</span>
+                {% else %}
+                    <span class="status absent">Absent</span>
+                {% endif %}
+
+            </p>
+
+        </div>
+
+
+        <a href="/" class="home-btn">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</body>
+
+</html>

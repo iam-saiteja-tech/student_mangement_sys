@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Update Student</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', sans-serif;
+            background: #111827;
+        }
+
+        form {
+            width: 650px;
+            max-width: 100%;
+            padding: 35px;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 20px;
+        }
+
+        h2 {
+            grid-column: 1 / -1;
+            color: #f9fafb;
+            font-size: 27px;
+            margin-bottom: 15px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #374151;
+        }
+
+        label {
+            display: block;
+            color: #d1d5db;
+            font-size: 14px;
+            font-weight: 600;
+            margin: 12px 0 8px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+            background: #111827;
+            color: #f9fafb;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+        }
+
+        input:hover,
+        select:hover {
+            border-color: #f97316;
+        }
+
+        button {
+            grid-column: 1 / -1;
+            width: 100%;
+            margin-top: 22px;
+            padding: 15px;
+            border: none;
+            border-radius: 9px;
+            background: linear-gradient(120deg, #f97316, #ea580c);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+        }
+
+        @media(max-width: 550px) {
+            form {
+                grid-template-columns: 1fr;
+                padding: 22px;
+            }
+
+            h2,
+            button {
+                grid-column: 1;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <form action="/students/update/{{ std[0] }}" method="post">
+
+        <h2>Update Student {{ std[1] }}</h2>
+
+        <div>
+            <label for="name">Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ std[1] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="age">Age</label>
+            <input
+                type="number"
+                id="age"
+                name="age"
+                value="{{ std[2] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="gender">Gender</label>
+            <input
+                type="text"
+                id="gender"
+                name="gender"
+                value="{{ std[3] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="marks">Marks</label>
+            <input
+                type="number"
+                id="marks"
+                name="marks"
+                value="{{ std[4] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="courese">Course</label>
+            <input
+                type="text"
+                id="courese"
+                name="courese"
+                value="{{ std[5] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="image">Image URL</label>
+            <input
+                type="text"
+                id="image"
+                name="image"
+                value="{{ std[6] }}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="status">Status</label>
+
+            <select name="status" id="status">
+
+                {% if std[7] == "true" %}
+                    <option value="true" selected>Present</option>
+                    <option value="false">Absent</option>
+                {% else %}
+                    <option value="false" selected>Absent</option>
+                    <option value="true">Present</option>
+                {% endif %}
+
+            </select>
+        </div>
+
+        <button type="submit">
+            Update Student
+        </button>
+
+    </form>
+
+</body>
+</html>
